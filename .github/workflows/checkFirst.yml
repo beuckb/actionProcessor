@@ -1,0 +1,18 @@
+name: stuff
+on:
+  
+	workflow_dispatch:
+	inputs:
+		rack-name:
+			type: choice
+			description: Select a rack
+			options:
+				- rack-1
+        - rack-2
+				
+jobs:
+	clone_repository:
+		runs-on: ${{ github.event.inputs.rack-name }}
+	
+steps:
+	- uses: actions/checkout@v3
