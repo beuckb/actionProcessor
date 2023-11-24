@@ -1,17 +1,29 @@
-name: checkout first action
+# This is a basic workflow that is manually triggered
+
+name: checkout the repository
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
 on:
   workflow_dispatch:
-  	inputs:
-   		rack-name:
-	 		type: choice
-			description: Select a rack
-			options:
-				- rack-1
-        		- rack-2
-				
+    # Inputs the workflow accepts.
+    inputs:
+      rack-name:
+        type: choice
+        description: Select a rack
+        options: 
+        - rack-42
+        - Rack-2
+        - Rack-3
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-	clone_repository:
-		runs-on: ${{ github.event.inputs.rack-name }}
-	
-		steps:
-			- uses: actions/checkout@v3
+  # This workflow contains a single job called "greet"
+  clone_repository:
+    # The type of runner that the job will run on
+    # runs-on: ${{ github.event.inputs.rack-name }}
+    runs-on: Windows
+    
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    - uses: actions/checkout@v3
